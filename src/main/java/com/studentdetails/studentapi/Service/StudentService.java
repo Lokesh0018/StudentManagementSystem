@@ -41,8 +41,19 @@ public class StudentService {
         return student;
     }
 
-    public Student updateStudent (int id) {
-        Student student = studentRepo.findById(id).orElse(null);
-        return student;
+    public Student findUpdate (int id) {
+        return studentRepo.findById(id).orElse(null);
     }
+
+    public Student updateStudent (Student student,MultipartFile img) throws IOException{
+        Student update = studentRepo.findById(student.getId()).orElse(student);
+        update.setName(student.getName());
+        update.setEmail(student.getEmail());
+        update.setBranch(student.getBranch());
+        update.setState(student.getState());
+        update.setCountry(student.getCountry());
+        update.setImg(img.getBytes());
+        return studentRepo.save(update);
+    }
+
 }
