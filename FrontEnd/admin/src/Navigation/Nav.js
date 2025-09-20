@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { TbCircleLetterAFilled, TbSmartHome, TbUsers, TbUser } from "react-icons/tb";
+import { Link } from "react-router-dom";
 import { CgClose } from "react-icons/cg";
 
 const Nav = () => {
@@ -7,7 +8,7 @@ const Nav = () => {
     const [select, setSelect] = useState("home");
 
     return (
-        <div className={`nav ${pressed ? "expand" : "collapse"}`}>      
+        <div className={`nav ${pressed ? "expand" : "collapse"}`}>
             <div className="navItems">
                 <div className="icContainer" onClick={() => setPressed(!pressed)}>
                     <TbCircleLetterAFilled className="icon" />
@@ -15,14 +16,20 @@ const Nav = () => {
                     <CgClose className={pressed ? "ic display" : "icon hide"} onClick={() => setPressed(false)} />
                 </div>
                 <ul className="navList">
-                    <li className={`items ${select === "home" ? "itemSelect" : ""}`} onClick={() => setSelect("home")}>
-                        <TbSmartHome className="ic" /><span className={pressed ? "display" : "hide"}>Home</span>
+                    <li onClick={() => setSelect("home")}>
+                        <Link to="/" className={`items ${select === "home" ? "itemSelect" : ""}`} >
+                            <TbSmartHome className="ic" /><span className={pressed ? "display" : "hide"}>Home</span>
+                        </Link>
                     </li>
-                    <li className={`items ${select === "students" ? "itemSelect" : ""}`} onClick={() => setSelect("students")}>
-                        <TbUsers className="ic" /><span className={pressed ? "display" : "hide"}>Students</span>
+                    <li onClick={() => setSelect("students")}>
+                        <Link to="/students" className={`items ${select === "students" ? "itemSelect" : ""}`}>
+                            <TbUsers className="ic" /><span className={pressed ? "display" : "hide"}>Students</span>
+                        </Link>
                     </li>
-                    <li className={`items ${select === "student" ? "itemSelect" : ""}`} onClick={() => setSelect("student")}>
-                        <TbUser className="ic" /><span className={pressed ? "display" : "hide"}>Student</span>
+                    <li onClick={() => setSelect("student")}>
+                        <Link to="/student" className={`items ${select === "student" ? "itemSelect" : ""}`} >
+                            <TbUser className="ic" /><span className={pressed ? "display" : "hide"}>Student</span>
+                        </Link>
                     </li>
                 </ul>
             </div>
