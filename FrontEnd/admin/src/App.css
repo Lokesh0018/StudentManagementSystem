@@ -128,7 +128,7 @@
   transition: all 1s ease;
 }
 
-.home{
+.home,.students,.student,.find,.update{
   width: 100%;
   height: 92vh;
   padding: 20px;
@@ -172,11 +172,6 @@
   font-weight: 100;
   font-size: 24px;
   color: var(--primary-color);
-}
-
-.students{
-  width: 100%;
-  height: 85vh;
 }
 
 .studentsHeader{
@@ -231,7 +226,6 @@
 }
 
 .details{
-  border: 1px solid black;
   padding: 10px;
   height: auto;
   width: 100%;
@@ -246,10 +240,143 @@
   width: 100%;
 }
 
-.detailsHead th{
-  border-radius: 2px;
+.detailsTab {
+  width: 100%;
 }
 
-.detailsBody{
-  border-bottom: 5px dotted var(--text-color-bg);
+.detailsBody td {
+  border-bottom: 2px dotted var(--text-color-bg);
+  padding: 8px;
+  height: 50px;
+}
+
+.stuName{
+  display: flex;
+  align-items: center;
+}
+
+.stuImg{
+  border: 1px solid black;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.addContainer{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  height: 80%;
+}
+
+.addCard{
+  height: 90%;
+  width: 50%;
+}
+
+.addStudent{
+  height: 100%;
+}
+
+.addStudent table{
+  height: 100%;
+  width: 80%;
+  font-size: 26px;
+}
+
+.addStudent table tr td input[type="file"]::file-selector-button{
+  background-color: var(--primary-color);
+  color: var(--text-color-bg);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.ipTxt{
+  height: 60%;
+  width: 80%;
+  border-radius: 5px;
+  outline: none;
+  font-size: 22px;
+  padding: 0 5px;
+  border: 1px solid var(--text-color);
+}
+
+.ipTxt:active,
+.ipTxt:hover,
+.ipTxt:hover,
+.ipTxt:focus,
+.ipTxt:focus{
+  border: 1px solid var(--primary-color);
+}
+
+.addStudent table tr:nth-child(7) td{
+  text-align: center;
+}
+
+.addStudent table tr:nth-child(7) td button{
+  width: 50%;
+  height: 70%;
+  border-radius: 5px;
+  background-color: #000;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.addStudent table tr:nth-child(7) td button:hover,
+.ipBtn:hover{
+  box-shadow:  1px 1px 2px 0px #000;
+  transition: 0.5s ease-in-out all;
+}
+
+.findIp{
+  width: 60%;
+  padding: 0 30px;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+}
+
+.findIp .ipTxt{
+  width: 50%;
+}
+
+.ipBtn{
+  margin: 0 10px;
+  width: 20%;
+  height: 25px;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.found{
+  height: 70%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  gap: 30px;
+}
+
+.imgName{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imgName img{
+  border: 1px solid black;
+  height: 150px;
+  width: 150px;
+}
+
+.branchEmail,.stateCountry{
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
 }

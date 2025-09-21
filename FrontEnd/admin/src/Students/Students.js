@@ -35,25 +35,25 @@ const Students = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="detailsbody">
+            <tr className="detailsBody">
               <td>1</td>
-              <td>Name</td>
+              <td className="stuName"><img src="" className="stuImg" alt="image1" />Name</td>
               <td>Email</td>
               <td>Branch</td>
               <td>State</td>
               <td>Country</td>
             </tr>
-            <tr className="detailsbody">
+            <tr className="detailsBody">
               <td>Id</td>
-              <td>Name</td>
+              <td className="stuName"><img src="" className="stuImg" alt="image2" />Name</td>
               <td>Email</td>
               <td>Branch</td>
               <td>State</td>
               <td>Country</td>
             </tr>
-            <tr className="detailsbody">
+            <tr className="detailsBody">
               <td>Id</td>
-              <td>Name</td>
+              <td className="stuName"><img src="" className="stuImg" alt="image3" />Name</td>
               <td>Email</td>
               <td>Branch</td>
               <td>State</td>

@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { TbCircleLetterAFilled, TbSmartHome, TbUsers, TbUser } from "react-icons/tb";
+import { TbCircleLetterAFilled, TbSmartHome, TbUsers,TbUserSearch } from "react-icons/tb";
+import { RxUpdate } from "react-icons/rx";
+import { MdOutlineDeleteForever } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { CgClose } from "react-icons/cg";
+import { RiUserAddLine } from "react-icons/ri";
 
 const Nav = () => {
     const [pressed, setPressed] = useState(true);
@@ -28,7 +31,22 @@ const Nav = () => {
                     </li>
                     <li onClick={() => setSelect("student")}>
                         <Link to="/student" className={`items ${select === "student" ? "itemSelect" : ""}`} >
-                            <TbUser className="ic" /><span className={pressed ? "display" : "hide"}>Student</span>
+                            <RiUserAddLine className="ic" /><span className={pressed ? "display" : "hide"}>Student</span>
+                        </Link>
+                    </li>
+                    <li onClick={() => setSelect("find")}>
+                        <Link to="/find" className={`items ${select === "find" ? "itemSelect" : ""}`} >
+                            <TbUserSearch className="ic" /><span className={pressed ? "display" : "hide"}>View</span>
+                        </Link>
+                    </li>
+                    <li onClick={() => setSelect("update")}>
+                        <Link to="/update" className={`items ${select === "update" ? "itemSelect" : ""}`} >
+                            <RxUpdate className="ic" /><span className={pressed ? "display" : "hide"}>Update</span>
+                        </Link>
+                    </li>
+                    <li onClick={() => setSelect("delete")}>
+                        <Link to="/delete" className={`items ${select === "delete" ? "itemSelect" : ""}`} >
+                            <MdOutlineDeleteForever className="ic" /><span className={pressed ? "display" : "hide"}>Remove</span>
                         </Link>
                     </li>
                 </ul>
