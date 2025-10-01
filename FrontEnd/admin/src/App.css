@@ -380,3 +380,7 @@
   display: flex;
   justify-content: space-between;
 }
+
+.ipField,.sBtn{
+  height: 40px;
+}

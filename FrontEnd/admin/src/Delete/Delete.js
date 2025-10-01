@@ -9,8 +9,8 @@ const Delete = () => {
             <form className="findForm">
                 <div className="findIp">
                     <label>Name :</label>
-                    <input type="text" className="ipTxt"/>
-                    <input type="submit" className="ipBtn" value="Remove"/>
+                    <input type="text" className="ipTxt ipField"/>
+                    <input type="submit" className="ipBtn sBtn" value="Remove"/>
                 </div>
             </form>
         </div>

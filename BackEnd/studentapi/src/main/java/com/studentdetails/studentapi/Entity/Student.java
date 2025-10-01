@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
+import jakarta.persistence.Transient;
 
 @Component
 @Entity
@@ -20,7 +21,7 @@ public class Student {
     private String country;
     @Lob
     private byte[] img;
-    
+
     public Student() {
     }
 
@@ -88,6 +89,17 @@ public class Student {
 
     public void setImg(byte[] img) {
         this.img = img;
+    }
+
+    @Transient
+    private String imageUrl;
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
 }

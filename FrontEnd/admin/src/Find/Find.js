@@ -9,8 +9,8 @@ const Find = () => {
             <form className="findForm">
                 <div className="findIp">
                     <label>Name :</label>
-                    <input type="text" className="ipTxt"/>
-                    <input type="submit" className="ipBtn" value="Find"/>
+                    <input type="text" className="ipTxt ipField"/>
+                    <input type="submit" className="ipBtn sBtn" value="Find"/>
                 </div>
             </form>
             <div className="found">

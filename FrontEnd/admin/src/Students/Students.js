@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IoIosAdd } from "react-icons/io";
 
 const Students = () => {
+  const [data, setData] = useState({});
+  useEffect(() => {
+    fetch('http://localhost:8081/all')
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+      })
+      .catch((err) => alert(err));
+  }, [])
   return (
     <div className="students">
       <div className="studentsHeader">
@@ -35,30 +44,19 @@ const Students = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="detailsBody">
-              <td>1</td>
-              <td className="stuName"><img src="" className="stuImg" alt="image1" />Name</td>
-              <td>Email</td>
-              <td>Branch</td>
-              <td>State</td>
-              <td>Country</td>
-            </tr>
-            <tr className="detailsBody">
-              <td>Id</td>
-              <td className="stuName"><img src="" className="stuImg" alt="image2" />Name</td>
-              <td>Email</td>
-              <td>Branch</td>
-              <td>State</td>
-              <td>Country</td>
-            </tr>
-            <tr className="detailsBody">
-              <td>Id</td>
-              <td className="stuName"><img src="" className="stuImg" alt="image3" />Name</td>
-              <td>Email</td>
-              <td>Branch</td>
-              <td>State</td>
-              <td>Country</td>
-            </tr>
+            {Array.isArray(data) && data.map((student, index) => (
+              <tr className="detailsBody" key={index}>
+                <td>{student.id}</td>
+                <td className="stuName">
+                  <img src={student.imageUrl} className="stuImg" alt={`image${index + 1}`} />
+                  {student.name}
+                </td>
+                <td>{student.email}</td>
+                <td>{student.branch}</td>
+                <td>{student.state}</td>
+                <td>{student.country}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
