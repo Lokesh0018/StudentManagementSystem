@@ -30,12 +30,14 @@ public class StudentService {
     }
 
     public Student getByName(String name) {
-        return studentRepo.findByName(name).orElse(null);
+        Student student = studentRepo.findByName(name).orElse(null);
+        student.setImageUrl("http://localhost:8081/image/"+student.getId());
+        return student;
     }
 
     public Student addStudent(Student student, MultipartFile img) throws IOException {
         student.setImg(img.getBytes());
-        return student;
+        return studentRepo.save(student);
     }
 
     public Student delStudent(int id) {

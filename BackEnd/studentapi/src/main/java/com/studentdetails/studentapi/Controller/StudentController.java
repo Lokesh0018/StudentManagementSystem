@@ -55,8 +55,7 @@ public class StudentController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> addStudent(@RequestPart("studentData") String studentJson,
-            @RequestPart("img") MultipartFile img) {
+    public ResponseEntity<?> addStudent(@RequestPart("studentData") String studentJson,@RequestPart("img") MultipartFile img) {
         try {
             ObjectMapper mapper = new ObjectMapper();
             Student student = mapper.readValue(studentJson, Student.class);
@@ -99,9 +98,8 @@ public class StudentController {
     @GetMapping("/image/{id}")
     public ResponseEntity<byte[]> getImage(@PathVariable int id) {
         Student student = studentService.getById(id);
-        if (student == null || student.getImg() == null) {
+        if (student == null || student.getImg() == null) 
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.IMAGE_JPEG); // or IMAGE_PNG if needed
