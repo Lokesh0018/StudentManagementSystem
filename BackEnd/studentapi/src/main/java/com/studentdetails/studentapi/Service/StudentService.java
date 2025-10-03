@@ -21,6 +21,7 @@ public class StudentService {
         List<Student> students = studentRepo.findAll();
         for (Student s : students) {
             s.setImageUrl("http://localhost:8081/image/" + s.getId());
+            studentRepo.save(s);
         }
         return students;
     }
@@ -48,26 +49,16 @@ public class StudentService {
         return student;
     }
 
-    public Student findUpdate(int id) {
-        return studentRepo.findById(id).orElse(null);
-    }
-
-    public Student updateStudent(Student student, MultipartFile img) throws IOException {
-        Student update = studentRepo.findById(student.getId()).orElse(null);
-        if (update == null) {
-            return null;
-        }
-
+    public Student updateStudent(int id,Student student, MultipartFile img) throws Exception {
+        Student update = studentRepo.findById(id).orElse(null);
+        if (update == null) 
+            throw new Exception("ID not found");
         update.setName(student.getName());
         update.setEmail(student.getEmail());
         update.setBranch(student.getBranch());
         update.setState(student.getState());
         update.setCountry(student.getCountry());
-
-        if (img != null && !img.isEmpty()) {
-            update.setImg(img.getBytes());
-        }
-
+        update.setImg(img.getBytes());
         return studentRepo.save(update);
     }
 

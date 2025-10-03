@@ -74,21 +74,12 @@ public class StudentController {
         return new ResponseEntity<>(delete, HttpStatus.OK);
     }
 
-    @GetMapping("/update/{id}")
-    public ResponseEntity<?> findUpdate(@PathVariable int id) {
-        Student update = studentService.findUpdate(id);
-        if (update == null)
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        return new ResponseEntity<>(update, HttpStatus.OK);
-    }
-
-    @PutMapping("/update")
-    public ResponseEntity<?> updateStudent(@RequestPart("studentData") String studentJson,
-            @RequestPart("img") MultipartFile img) {
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> updateStudent(@PathVariable int id,@RequestPart("studentData") String studentJson,@RequestPart("img") MultipartFile img) {
         try {
             ObjectMapper mapper = new ObjectMapper();
             Student student = mapper.readValue(studentJson, Student.class);
-            Student update = studentService.updateStudent(student, img);
+            Student update = studentService.updateStudent(id,student, img);
             return new ResponseEntity<>(update, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

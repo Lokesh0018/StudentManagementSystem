@@ -275,6 +275,7 @@
 }
 
 .addStudent{
+  display: flex;
   height: 100%;
 }
 
@@ -383,4 +384,14 @@
 
 .ipField,.sBtn{
   height: 40px;
+}
+
+.imgUp{
+  height: 30%;
+  width: 30%;
+}
+
+.imgUp img{
+  height: 100%;
+  width: 100%;
 }
