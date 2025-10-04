@@ -17,7 +17,7 @@ const Student = () => {
             body : formData
         })
         .then((res)=>res.json())
-        .then((data)=>alert('successs:',JSON.stringify(data)))
+        .then((data)=>alert('successs:'))
         .catch((err)=>alert(err));
     } 
     return (

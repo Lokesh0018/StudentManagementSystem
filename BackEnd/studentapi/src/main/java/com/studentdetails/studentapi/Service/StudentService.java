@@ -32,7 +32,7 @@ public class StudentService {
 
     public Student getByName(String name) {
         Student student = studentRepo.findByName(name).orElse(null);
-        student.setImageUrl("http://localhost:8081/image/"+student.getId());
+        student.setImageUrl("http://localhost:8081/image/" + student.getId());
         return student;
     }
 
@@ -41,24 +41,26 @@ public class StudentService {
         return studentRepo.save(student);
     }
 
-    public Student delStudent(int id) {
-        Student student = studentRepo.findById(id).orElse(null);
+    public Student delStudent(String name) {
+        Student student = studentRepo.findByName(name).orElse(null);
         if (student == null)
             return null;
-        studentRepo.deleteById(id);
+        studentRepo.deleteById(student.getId());
         return student;
     }
 
-    public Student updateStudent(int id,Student student, MultipartFile img) throws Exception {
-        Student update = studentRepo.findById(id).orElse(null);
-        if (update == null) 
+    public Student updateStudent(Student student, MultipartFile img) throws Exception {
+        Student update = studentRepo.findById(student.getId()).orElse(null);
+        if (update == null)
             throw new Exception("ID not found");
         update.setName(student.getName());
         update.setEmail(student.getEmail());
         update.setBranch(student.getBranch());
         update.setState(student.getState());
         update.setCountry(student.getCountry());
-        update.setImg(img.getBytes());
+        if (img != null && !img.isEmpty()) {
+            update.setImg(img.getBytes());
+        }
         return studentRepo.save(update);
     }
 
